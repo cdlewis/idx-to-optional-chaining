@@ -1,6 +1,6 @@
-# idx to optional-chaining
+# idx to optional chaining
 
-Facebook's idx was a useful helper prior to the optional chaining maturing as a standard because it
+Facebook's [idx](https://github.com/facebookincubator/idx) was a useful helper prior to the [optional chaining](https://github.com/tc39/proposal-optional-chaining) maturing as a standard because it
 played nicely with Flow. But now optional chaining is stage 1 and has Flow support. This codemod
 will convert transform most usages of idx.
 
