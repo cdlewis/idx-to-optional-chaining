@@ -6,8 +6,10 @@ will convert transform most usages of idx.
 
 ## Usage
 
-```
-// TODO
+```bash
+git clone git@github.com:cdlewis/idx-to-optional-chaining.git
+npm install -g jscodeshift
+jscodeshift -t idx-to-optional-chaining/index.js file-to-transform.js
 ```
 
 ## Example
