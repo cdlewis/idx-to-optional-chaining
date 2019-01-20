@@ -7,9 +7,9 @@ will convert transform most usages of idx.
 ## Usage
 
 ```console
-$ git clone git@github.com:cdlewis/idx-to-optional-chaining.git
-$ npm install -g jscodeshift
-$ jscodeshift -t idx-to-optional-chaining/index.js file-to-transform.js
+foo@bar:~$ git clone git@github.com:cdlewis/idx-to-optional-chaining.git
+foo@bar:~$ npm install -g jscodeshift
+foo@bar:~$ jscodeshift -t idx-to-optional-chaining/index.js file-to-transform.js
 ```
 
 ## Example
