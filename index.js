@@ -32,16 +32,6 @@ module.exports = function transformer(file, api) {
         }
       });
 
-    if (path.value.arguments[0].type === "MemberExpression") {
-      j(path).replaceWith(
-        j.memberExpression(
-          path.value.arguments[0],
-          path.value.arguments[1].body
-        )
-      );
-      return;
-    }
-
     j(path).replaceWith(
       j.optionalMemberExpression(
         path.value.arguments[0],
