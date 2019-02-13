@@ -17,13 +17,13 @@ foo@bar:~$ jscodeshift -t idx-to-optional-chaining/index.js file-to-transform.js
 Before:
 
 ```js
-import idx from 'idx';
+import idx from "idx";
 
-let a = idx(a, _ => _.b) 
-let b = idx(a, _ => _.b.c)
-let c = idx(a, _ => _.b.c.d)
-let d = idx(a, _ => _[0][1][2])
-let e = idx(a, _ => _.b[0].c[variable])
+let a = idx(a, _ => _.b);
+let b = idx(a, _ => _.b.c);
+let c = idx(a, _ => _.b.c.d);
+let d = idx(a, _ => _[0][1][2]);
+let e = idx(a, _ => _.b[0].c[variable]);
 ```
 
 After:

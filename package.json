@@ -1,0 +1,27 @@
+{
+  "name": "idx-to-optional-chaining",
+  "version": "1.0.0",
+  "description": "JSCodeShift codemod that transforms usage of idx to the draft optional chaining standard.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cdlewis/idx-to-optional-chaining.git"
+  },
+  "author": "Chris Lewis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cdlewis/idx-to-optional-chaining/issues"
+  },
+  "homepage": "https://github.com/cdlewis/idx-to-optional-chaining",
+  "engine": {
+    "node": "6.* || 8.* || >= 10.*"
+  },
+  "devDependencies": {
+    "idx": "^2.5.3",
+    "jest": "^24.1.0",
+    "jscodeshift": "^0.6.3"
+  }
+}

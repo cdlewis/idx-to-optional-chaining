@@ -1,4 +1,4 @@
-export default function transformer(file, api) {
+module.exports = function transformer(file, api) {
   const j = api.jscodeshift;
   const root = j(file.source);
 
@@ -12,31 +12,43 @@ export default function transformer(file, api) {
       return;
     }
 
-    j(path).find(j.MemberExpression).forEach(exp => {
-      if (
-        exp.value.object.name === "_") {
-      	return j(exp).replaceWith(exp.value.property);
-      }
-      
-      if (exp.value.object && exp.value.property) {
-      	j(exp).replaceWith(
-          j.optionalMemberExpression(
-            exp.value.object,
-            exp.value.property,
-            exp.value.computed
-          )
-        );
-      }
-    })
+    // Narrow search to within the arrow function to avoid mutating first argument to idx
+    j(path)
+      .find(j.ArrowFunctionExpression)
+      .find(j.MemberExpression)
+      .forEach(exp => {
+        if (exp.value.object.name === "_") {
+          return j(exp).replaceWith(exp.value.property);
+        }
+
+        if (exp.value.object && exp.value.property) {
+          j(exp).replaceWith(
+            j.optionalMemberExpression(
+              exp.value.object,
+              exp.value.property,
+              exp.value.computed
+            )
+          );
+        }
+      });
+
+    if (path.value.arguments[0].type === "MemberExpression") {
+      j(path).replaceWith(
+        j.memberExpression(
+          path.value.arguments[0],
+          path.value.arguments[1].body
+        )
+      );
+      return;
+    }
 
     j(path).replaceWith(
       j.optionalMemberExpression(
-        j.identifier(path.value.arguments[0].name),
+        path.value.arguments[0],
         path.value.arguments[1].body
       )
-    )
+    );
   });
 
   return root.toSource();
-}
-
+};
