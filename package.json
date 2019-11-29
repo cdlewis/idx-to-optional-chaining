@@ -4,7 +4,7 @@
   "description": "JSCodeShift codemod that transforms usage of idx to the draft optional chaining standard.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "pwd && jest"
   },
   "repository": {
     "type": "git",
@@ -23,12 +23,5 @@
     "idx": "^2.5.3",
     "jest": "^24.1.0",
     "jscodeshift": "^0.6.3"
-  },
-  "jest": {
-    "globals": {
-      "baseDir": "../"
-    },
-    "testEnvironment": "node",
-    "roots": ["__tests__"]
   }
 }
