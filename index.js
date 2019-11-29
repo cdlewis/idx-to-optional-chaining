@@ -22,7 +22,7 @@ module.exports.default = function transformer(file, api) {
       .find(j.ArrowFunctionExpression)
       .find(j.MemberExpression)
       .forEach(exp => {
-        if (exp.value.object.name === "_") {
+        if (exp.value.object.name) {
           return j(exp).replaceWith(exp.value.property);
         }
 
