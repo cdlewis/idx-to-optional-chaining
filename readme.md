@@ -1,4 +1,4 @@
-# idx to optional chaining
+# idx to optional chaining [![Build Status](https://travis-ci.com/cdlewis/idx-to-optional-chaining.svg?branch=master)](https://travis-ci.com/cdlewis/idx-to-optional-chaining)
 
 Facebook's [idx](https://github.com/facebookincubator/idx) was a useful helper prior to the [optional chaining](https://github.com/tc39/proposal-optional-chaining) maturing as a standard because it
 played nicely with Flow. But now optional chaining is stage 1 and has Flow support. This codemod
