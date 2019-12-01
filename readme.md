@@ -35,8 +35,3 @@ let c = a?.b?.c?.d
 let d = a?.0?.[1]?.[2]
 let e = a?.b?.[0]?.c?.[variable]
 ```
-
-## Known Issues
-This codemod is not perfect. When a computed property access (i.e. square brackets) is the first argument, it won't be prefixed with a `?` ([Issue #5](https://github.com/cdlewis/idx-to-optional-chaining/issues/5)). All references to the object within the idx call will be removed, even if they're not an optional access ([Issue #7](https://github.com/cdlewis/idx-to-optional-chaining/issues/7)).
-
-PRs fixing these bugs are welcome :)
