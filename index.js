@@ -17,13 +17,20 @@ module.exports.default = function transformer(file, api) {
       return;
     }
 
+    const rootObject = path.value.arguments[0];
+
     // Narrow search to within the arrow function to avoid mutating first argument to idx
     j(path)
       .find(j.ArrowFunctionExpression)
       .find(j.MemberExpression)
       .forEach(exp => {
         if (exp.value.object.name) {
-          return j(exp).replaceWith(exp.value.property);
+          return j(exp).replaceWith(
+          	j.optionalMemberExpression(
+              rootObject,
+              exp.value.property,
+            )
+          );
         }
 
         if (exp.value.object && exp.value.property) {
@@ -37,12 +44,8 @@ module.exports.default = function transformer(file, api) {
         }
       });
 
-    j(path).replaceWith(
-      j.optionalMemberExpression(
-        path.value.arguments[0],
-        path.value.arguments[1].body
-      )
-    );
+    // Replace the idx call with its second argument
+    j(path).replaceWith(path.value.arguments[1].body);
   });
 
   // If the first node has been modified or deleted, reattach the comments
