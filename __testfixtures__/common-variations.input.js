@@ -19,3 +19,9 @@ idx(a, _ => _[0]);
 idx(a, _ => _[a[a[a[a[a.b.c]]]]])
 
 idx(a, x => x[x[x[0]][x[1]]]);
+
+function test() {
+    return {
+        result: idx(items, _ => _[0].totalCount) || 0,
+    }
+}

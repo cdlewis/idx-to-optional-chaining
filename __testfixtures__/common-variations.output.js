@@ -17,3 +17,9 @@ a?.[0];
 a?.[a[a[a[a[a.b.c]]]]]
 
 a?.[x[x[0]][x[1]]];
+
+function test() {
+    return {
+        result: items?.[0]?.totalCount || 0,
+    };
+}
