@@ -53,6 +53,7 @@ module.exports.default = function transformer(file, api) {
           	j.optionalMemberExpression(
               rootObject,
               exp.value.property,
+              exp.value.computed,
             )
           );
         }

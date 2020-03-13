@@ -22,6 +22,6 @@
   "devDependencies": {
     "idx": "^2.5.3",
     "jest": "^24.1.0",
-    "jscodeshift": "^0.6.3"
+    "jscodeshift": "^0.7.0"
   }
 }
