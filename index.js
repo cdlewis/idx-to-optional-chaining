@@ -14,7 +14,7 @@ function shouldTransformNode(currentNode, root) {
   return true;
 }
 
-module.exports.default = function transformer(file, api) {
+function transformer(file, api) {
   const j = api.jscodeshift;
   const root = j(file.source);
   const getFirstNode = () => root.find(j.Program).get("body", 0).node;
@@ -81,3 +81,6 @@ module.exports.default = function transformer(file, api) {
 
   return root.toSource();
 };
+
+module.exports = transformer;
+module.exports.parser = 'tsx';
