@@ -36,10 +36,14 @@ module.exports.default = function transformer(file, api) {
     const rootObject = path.value.arguments[0];
 
     // Narrow search to within the arrow function to avoid mutating first argument to idx
-    j(path)
-      .find(j.ArrowFunctionExpression)
-      .find(j.MemberExpression)
-      .forEach(exp => {
+    const memberExpressions = j(path).find(j.ArrowFunctionExpression).find(j.MemberExpression);
+
+    // Edge case: idx was called but no property accesses occured
+    if (memberExpressions.length === 0) {
+      return j(path).replaceWith(path.value.arguments[0])
+    }
+
+    memberExpressions.forEach(exp => {
         // Don't transform member expressions within a computed property access
         // e.g. ignore the 'window.location' part of idx(x, _ => _[`${window.location}`])
         if (!shouldTransformNode(exp, path, ['MemberExpression', 'ArrowFunctionExpression', 'OptionalMemberExpression'])) {
