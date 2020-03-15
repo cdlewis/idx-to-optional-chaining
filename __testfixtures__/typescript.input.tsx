@@ -19,3 +19,5 @@ idx(a, _ => _[0]);
 idx(a, _ => _[a[a[a[a[a.b.c]]]]])
 
 idx(a, x => x[x[x[0]][x[1]]]);
+
+idx(value, _ => _!.currentValue!.next[`${value!.next}`]) || 0;
